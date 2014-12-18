@@ -1,0 +1,65 @@
+parameters:
+    apinnecke_oauth.uri_factory.class: OAuth\Common\Http\Uri\UriFactory
+    apinnecke_oauth.base_service_factory.class: OAuth\ServiceFactory
+    apinnecke_oauth.storage.class: OAuth\Common\Storage\SymfonySession
+    apinnecke_oauth.service_factory.class: APinnecke\Bundle\OAuthBundle\ServiceFactory\ServiceFactory
+
+    apinnecke_oauth.service.bit_bucket.class: OAuth\OAuth1\Service\BitBucket
+    apinnecke_oauth.service.etsy.class: OAuth\OAuth1\Service\Etsy
+    apinnecke_oauth.service.fit_bit.class: OAuth\OAuth1\Service\FitBit
+    apinnecke_oauth.service.flickr.class: OAuth\OAuth1\Service\Flickr
+    apinnecke_oauth.service.scoop_it.class: OAuth\OAuth1\Service\ScoopIt
+    apinnecke_oauth.service.tumblr.class: OAuth\OAuth1\Service\Tumblr
+    apinnecke_oauth.service.twitter.class: OAuth\OAuth1\Service\Twitter
+    apinnecke_oauth.service.xing.class: OAuth\OAuth1\Service\Xing
+    apinnecke_oauth.service.yahoo.class: OAuth\OAuth1\Service\Yahoo
+    apinnecke_oauth.service.amazon.class: OAuth\OAuth2\Service\Amazon
+    apinnecke_oauth.service.bitly.class: OAuth\OAuth2\Service\Bitly
+    apinnecke_oauth.service.box.class: OAuth\OAuth2\Service\Box
+    apinnecke_oauth.service.buffer.class: OAuth\OAuth2\Service\Buffer
+    apinnecke_oauth.service.dailymotion.class: OAuth\OAuth2\Service\Dailymotion
+    apinnecke_oauth.service.dropbox.class: OAuth\OAuth2\Service\Dropbox
+    apinnecke_oauth.service.facebook.class: OAuth\OAuth2\Service\Facebook
+    apinnecke_oauth.service.foursquare.class: OAuth\OAuth2\Service\Foursquare
+    apinnecke_oauth.service.github.class: OAuth\OAuth2\Service\Github
+    apinnecke_oauth.service.google.class: OAuth\OAuth2\Service\Google
+    apinnecke_oauth.service.harvest.class: OAuth\OAuth2\Service\Harvest
+    apinnecke_oauth.service.heroku.class: OAuth\OAuth2\Service\Heroku
+    apinnecke_oauth.service.instagram.class: OAuth\OAuth2\Service\Instagram
+    #apinnecke_oauth.service.jawbone_up.class: OAuth\OAuth2\Service\JawboneUp
+    apinnecke_oauth.service.linked_in.class: OAuth\OAuth2\Service\LinkedIn
+    apinnecke_oauth.service.mailchimp.class: OAuth\OAuth2\Service\Mailchimp
+    apinnecke_oauth.service.microsoft.class: OAuth\OAuth2\Service\Microsoft
+    apinnecke_oauth.service.paypal.class: OAuth\OAuth2\Service\Paypal
+    apinnecke_oauth.service.pocket.class: OAuth\OAuth2\Service\Pocket
+    apinnecke_oauth.service.reddit.class: OAuth\OAuth2\Service\Reddit
+    apinnecke_oauth.service.run_keeper.class: OAuth\OAuth2\Service\RunKeeper
+    #apinnecke_oauth.service.salesforce.class: OAuth\OAuth2\Service\Salesforce
+    apinnecke_oauth.service.sound_cloud.class: OAuth\OAuth2\Service\SoundCloud
+    #apinnecke_oauth.service.spotify.class: OAuth\OAuth2\Service\Spotify
+    apinnecke_oauth.service.ustream.class: OAuth\OAuth2\Service\Ustream
+    apinnecke_oauth.service.vkontakte.class: OAuth\OAuth2\Service\Vkontakte
+    apinnecke_oauth.service.yammer.class: OAuth\OAuth2\Service\Yammer
+
+services:
+    apinnecke_oauth.uri_factory:
+        class: "%apinnecke_oauth.uri_factory.class%"
+        public: false
+
+    apinnecke_oauth.base_service_factory:
+        class: "%apinnecke_oauth.base_service_factory.class%"
+
+    apinnecke_oauth.storage:
+        class: "%apinnecke_oauth.storage.class%"
+        arguments:
+            - "@session"
+
+    apinnecke_oauth.service_factory:
+        class: "%apinnecke_oauth.service_factory.class%"
+        arguments:
+            - "@service_container"
+            - "@apinnecke_oauth.base_service_factory"
+            - "@apinnecke_oauth.storage"
+
+    # provider services are added dynamically. Tey're gonna having the following format:
+    # e.g.: apinnecke_oauth.service.xing

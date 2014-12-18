@@ -1,0 +1,20 @@
+{
+    "name": "apinnecke/oauth-bundle",
+    "description": "Symfony2 Wrapper for lusitanian/oauth library.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Pinnecke",
+            "email": "alexander.pinnecke@googlemail.com"
+        }
+    ],
+    "require": {
+        "lusitanian/oauth": "0.3.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "APinnecke\\Bundle\\OAuthBundle\\": ""
+        }
+    },
+    "target-dir": "APinnecke/Bundle/OAuthBundle"
+}

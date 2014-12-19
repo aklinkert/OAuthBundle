@@ -74,7 +74,7 @@ $ composer update apinnecke/oauth-bundle
 
 ### Registering the Bundle
 
-Register the bundle in your ```AppKernel.php```:
+Register the bundle in your ```app/AppKernel.php```:
 
 ```php
     new \APinnecke\Bundle\OAuthBundle\APinneckeOAuthBundle(),
@@ -99,17 +99,19 @@ Xing is used as an example here. Replace it with whatever your want. Now add all
 Services will be created automatically by this bundle. In my case, i want the xing service:
  
 ```php
-    $this->container->get('apinnecke_oauth.service.xing')
+    $service = $this->container->get('apinnecke_oauth.service.xing');
 ```
 
 or inject it into another service:
 
 ```php
     fancy_company.random_namespace.wayne_bundle:
-        class: FancyCompany\Bundle\WayneBundle\MySuperSpecial\ClassForGetting\WorldDominance
+        class: FancyCompany\Bundle\WayneBundle\MyCool\ClassFor\WorldDominance
         arguments:
             - "@apinnecke_oauth.service.xing"
 ```
+
+---
 
 ### More usage examples:
 

@@ -28,16 +28,17 @@ class APinneckeOAuthExtension extends Extension
         $resourceOwners = array();
         foreach ($config['resource_owners'] as $name => $options) {
             $resourceOwners[] = $name;
+            $lowerName = strtolower($name);
 
             $definition = new Definition();
             $definition->setFactory(array(new Reference('apinnecke_oauth.service_factory'), 'createService'));
-            $definition->setClass('%apinnecke_oauth.service.' . $name . '.class%');
+            $definition->setClass('%apinnecke_oauth.service.' . $lowerName . '.class%');
             $definition->addArgument($name);
 
-            $container->setDefinition('apinnecke_oauth.service.' . $name, $definition);
+            $container->setDefinition('apinnecke_oauth.service.' . $lowerName, $definition);
 
             foreach($options as $key => $value) {
-                $container->setParameter('apinnecke_oauth.resource_owners.' . $name . '.' . $key, $value);
+                $container->setParameter('apinnecke_oauth.resource_owners.' . $lowerName . '.' . $key, $value);
             }
         }
         $container->setParameter('apinnecke_oauth.resource_owners', $resourceOwners);

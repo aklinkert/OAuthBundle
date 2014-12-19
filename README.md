@@ -91,10 +91,12 @@ Now add required config to ```app/config/config.yml```:
 ```yaml
 apinnecke_oauth:
     resource_owners:
-        xing:
+        Xing:
             client_id: thisismyclientid
             client_secret: thisismyclientsecret
 ```
+
+**important**:The resource owner name has to be in correct casing. Have a look on the available constants in [./ServiceFactory/ResourceOwners.php](/blob/master/ServiceFactory/ResourceOwners.php)
 
 Xing is used as an example here. Replace it with whatever your want. Now add all the resource owners you need, the services are created automatically.
 

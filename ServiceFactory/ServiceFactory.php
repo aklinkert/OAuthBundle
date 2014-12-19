@@ -30,6 +30,11 @@ class ServiceFactory
      */
     private $serviceCache = array();
 
+    /**
+     * @param ContainerInterface $container
+     * @param BaseServiceFactory $factory
+     * @param TokenStorageInterface $storage
+     */
     public function __construct(ContainerInterface $container, BaseServiceFactory $factory, TokenStorageInterface $storage)
     {
         $this->container = $container;

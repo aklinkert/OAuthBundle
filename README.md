@@ -3,7 +3,7 @@
 oauth-bundle is a symfony 2 wrapper bundle for [Lusitanian/PHPoAuthLib](https://github.com/Lusitanian/PHPoAuthLib) 
 which provides oAuth support in PHP 5.3+ and is very easy to integrate with any project which requires an oAuth client.
 
-[![Build Status](https://travis-ci.org/APinnecke/OAuthBundle.png?branch=master)](https://travis-ci.org/APinneckeOAuthBundle)
+[![Build Status](https://api.travis-ci.org/apinnecke/OAuthBundle.png?branch=master)](https://travis-ci.org/APinneckeOAuthBundle)
 [![Latest Stable Version](https://poser.pugx.org/apinnecke/oauth-bundle/v/stable.png)](https://packagist.org/packages/apinnecke/oauth-bundle)
 [![Total Downloads](https://poser.pugx.org/apinnecke/oauth-bundle/downloads.png)](https://packagist.org/packages/apinnecke/oauth-bundle)
 

@@ -48,7 +48,7 @@ final class ResourceOwners
     {
     }
 
-    public static $all = [
+    public static $all = array(
         self::BIT_BUCKET => self::BIT_BUCKET,
         self::ETSY => self::ETSY,
         self::FIT_BIT => self::FIT_BIT,
@@ -85,9 +85,9 @@ final class ResourceOwners
         self::USTREAM => self::USTREAM,
         self::VKONTAKTE => self::VKONTAKTE,
         self::YAMMER => self::YAMMER,
-    ];
+    );
 
-    public static $oauth1 = [
+    public static $oauth1 = array(
         self::BIT_BUCKET => self::BIT_BUCKET,
         self::ETSY => self::ETSY,
         self::FIT_BIT => self::FIT_BIT,
@@ -97,9 +97,9 @@ final class ResourceOwners
         self::TWITTER => self::TWITTER,
         self::XING => self::XING,
         self::YAHOO => self::YAHOO,
-    ];
+    );
 
-    public static $oauth2 = [
+    public static $oauth2 = array(
         self::AMAZON => self::AMAZON,
         self::BITLY => self::BITLY,
         self::BOX => self::BOX,
@@ -127,6 +127,6 @@ final class ResourceOwners
         self::USTREAM => self::USTREAM,
         self::VKONTAKTE => self::VKONTAKTE,
         self::YAMMER => self::YAMMER,
-    ];
+    );
 }
  

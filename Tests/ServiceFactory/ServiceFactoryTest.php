@@ -18,17 +18,17 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
      */
     private $serviceFactory;
 
-    private $config = [
-        0 => [
-            'resource_owners' => [
-                'xing' => [
+    private $config = array(
+        0 => array(
+            'resource_owners' => array(
+                'xing' => array(
                     'client_id' => 'thisismyclientid',
                     'client_secret' => 'thisismyclientsecret',
                     'callback_url' => 'thisismycallbackurl',
-                ],
-            ]
-        ]
-    ];
+                ),
+            )
+        )
+    );
 
     public function setUp()
     {

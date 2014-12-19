@@ -28,7 +28,7 @@ class ServiceFactory
     /**
      * @var array
      */
-    private $serviceCache = [];
+    private $serviceCache = array();
 
     public function __construct(ContainerInterface $container, BaseServiceFactory $factory, TokenStorageInterface $storage)
     {

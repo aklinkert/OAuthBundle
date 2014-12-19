@@ -37,7 +37,7 @@ class APinneckeOAuthExtension extends Extension
             $container->setDefinition('apinnecke_oauth.service.' . $name, $definition);
 
             foreach($options as $key => $value) {
-                $container->setParameter('apinnecke_oauth.' . $name . '.' . $key, $value);
+                $container->setParameter('apinnecke_oauth.resource_owners.' . $name . '.' . $key, $value);
             }
         }
         $container->setParameter('apinnecke_oauth.resource_owners', $resourceOwners);

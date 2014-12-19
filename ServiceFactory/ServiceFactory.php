@@ -7,6 +7,7 @@ use OAuth\Common\Exception\Exception;
 use OAuth\Common\Storage\TokenStorageInterface;
 use OAuth\ServiceFactory as BaseServiceFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Util\StringUtils;
 
 class ServiceFactory
 {
@@ -23,11 +24,6 @@ class ServiceFactory
      * @var TokenStorageInterface
      */
     private $storage;
-
-    /**
-     * @var array
-     */
-    private $credentialsCache = [];
 
     /**
      * @var array
@@ -56,22 +52,21 @@ class ServiceFactory
             return $this->serviceCache[$resourceOwnerName];
         }
 
-        if (!isset($this->credentialsCache[$resourceOwnerName])) {
-            $paramName = 'apinnecke_oauth.resource_owner.' . $resourceOwnerName . '.callback_url';
-
-            if ($this->container->hasParameter($paramName)) {
-                $callbackUrl = $this->container->getParameter($paramName);
-            } else {
-                $callbackUrl = $this->container->get('router')->getContext()->getBaseUrl();
-            }
-            $credentials = new Credentials(
-                $this->container->getParameter('apinnecke_oauth.resource_owner.' . $resourceOwnerName . '.client_id'),
-                $this->container->getParameter('apinnecke_oauth.resource_owner.' . $resourceOwnerName . '.client_secret'),
-                $callbackUrl
-            );
+        $lowerResourceOwnerName = $string = strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/',"_$1", $resourceOwnerName));
+        $paramName = 'apinnecke_oauth.resource_owners.' . $lowerResourceOwnerName . '.callback_url';
+        if (!$this->container->hasParameter($paramName)
+            || !($callbackUrl = $this->container->getParameter($paramName))
+            || null === $callbackUrl
+        ) {
+            $callbackUrl = $this->container->get('router')->getContext()->getBaseUrl();
         }
 
-        $credentials = isset($credentials)? $credentials : $this->credentialsCache[$resourceOwnerName];
+        $credentials = new Credentials(
+            $this->container->getParameter('apinnecke_oauth.resource_owners.' . $lowerResourceOwnerName . '.client_id'),
+            $this->container->getParameter('apinnecke_oauth.resource_owners.' . $lowerResourceOwnerName . '.client_secret'),
+            $callbackUrl
+        );
+
         return $this->serviceCache[$resourceOwnerName] = $this->factory->createService($resourceOwnerName, $credentials, $this->storage);
     }
 }

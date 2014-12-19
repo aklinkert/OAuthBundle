@@ -30,15 +30,19 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root($this->alias);
 
-        $rootNode->children()
-            ->arrayNode('resource_owners')
-                ->isRequired()
-                ->useAttributeAsKey('name')
-                ->prototype('array')
-                    ->children()
-                        ->scalarNode('client_id')->cannotBeEmpty()->end()
-                        ->scalarNode('client_secret')->cannotBeEmpty()->end()
-                        ->scalarNode('client_secret')->end()
+        $rootNode
+            ->fixXmlConfig($this->alias)
+            ->children()
+                ->arrayNode('resource_owners')
+                    ->isRequired()
+                    ->requiresAtLeastOneElement()
+                    ->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('client_id')->cannotBeEmpty()->end()
+                            ->scalarNode('client_secret')->cannotBeEmpty()->end()
+                            ->scalarNode('callback_url')->defaultValue(null)->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end();

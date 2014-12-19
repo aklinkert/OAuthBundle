@@ -9,6 +9,11 @@
         }
     ],
     "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": "~2.3",
+        "symfony/security-bundle": "~2.1",
+        "symfony/options-resolver": "~2.1",
+        "symfony/yaml": "~2.3",
         "lusitanian/oauth": "0.3.*"
     },
     "autoload": {
@@ -16,5 +21,8 @@
             "APinnecke\\Bundle\\OAuthBundle\\": ""
         }
     },
-    "target-dir": "APinnecke/Bundle/OAuthBundle"
+    "target-dir": "APinnecke/Bundle/OAuthBundle",
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+    }
 }

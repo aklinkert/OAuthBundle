@@ -13,8 +13,7 @@ which provides oAuth support in PHP 5.3+ and is very easy to integrate with any 
 - [Installation](#installation)
 - [Registering the Bundle](#registering-the-bundle)
 - [Configuration](#configuration)
-- [Usage](#usage)
-- [Basic usage](#basic-usage)
+- [Services](#services)
 - [More usage examples](#more-usage-examples)
 
 ## Supported services

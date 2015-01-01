@@ -7,7 +7,6 @@ use OAuth\Common\Exception\Exception;
 use OAuth\Common\Storage\TokenStorageInterface;
 use OAuth\ServiceFactory as BaseServiceFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Security\Core\Util\StringUtils;
 
 class ServiceFactory
 {

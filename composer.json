@@ -56,12 +56,12 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "symfony/framework-bundle": "~2.3",
-        "symfony/security-bundle": "~2.1",
-        "symfony/options-resolver": "~2.1",
-        "symfony/yaml": "~2.3",
-        "lusitanian/oauth": "0.3.*"
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "~3",
+        "symfony/security-bundle": "~3",
+        "symfony/options-resolver": "~3",
+        "symfony/yaml": "~3",
+        "lusitanian/oauth": "0.8.*"
     },
     "autoload": {
         "psr-0": {

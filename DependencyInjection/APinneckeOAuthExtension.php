@@ -39,7 +39,6 @@ class APinneckeOAuthExtension extends Extension
                 $definition->setFactoryService('apinnecke_oauth.service_factory');
                 $definition->setFactoryMethod('createService');
             }
-            $definition->setFactory(array(new Reference('apinnecke_oauth.service_factory'), 'createService'));
             $definition->setClass('%apinnecke_oauth.service.' . $lowerName . '.class%');
             $definition->addArgument($name);
 

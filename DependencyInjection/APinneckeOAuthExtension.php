@@ -31,7 +31,14 @@ class APinneckeOAuthExtension extends Extension
             $lowerName = strtolower($name);
 
             $definition = new Definition();
-            $definition->setFactory(array(new Reference('apinnecke_oauth.service_factory'), 'createService'));
+            if (method_exists($definition, 'setFactory')) {
+                // to be inlined when dependency on Symfony DependencyInjection is newer than 2.5.9
+                $definition->setFactory(array(new Reference('apinnecke_oauth.service_factory'), 'createService'));
+            } else {
+                // to be removed when dependency on Symfony DependencyInjection is older than 2.6
+                $definition->setFactoryService('apinnecke_oauth.service_factory');
+                $definition->setFactoryMethod('createService');
+            }
             $definition->setClass('%apinnecke_oauth.service.' . $lowerName . '.class%');
             $definition->addArgument($name);
 
